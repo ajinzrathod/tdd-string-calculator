@@ -39,7 +39,9 @@ public class StringCalculatorTest {
     public void checkNegativeInCustomDelimiter() throws HandleNegativeValues.negativesNotAllowed {
         sc.Add("//%\\n1%-8%-1%-12%26");
     }
-
+    public void greaterThan1000(){
+        assertEquals(sc.Add("//-\\n2000-6-3-1-1001"), 10);
+    }
     @org.testng.annotations.AfterMethod
     public void tearDown() {
         System.out.println("Completed");

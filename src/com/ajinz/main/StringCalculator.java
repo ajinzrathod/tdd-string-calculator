@@ -35,7 +35,10 @@ public class StringCalculator {
                 negative_numbers.add(current);
                 negative_numbers_str += (String.valueOf(current) + " ");
             }
-            total += current;
+
+            // Values greater than 1000 should not be added
+            if(current < 1001)
+                total += current;
         }
 
         // Throw Exception if negative Exists
