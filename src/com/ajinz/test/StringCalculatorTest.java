@@ -1,5 +1,6 @@
 package com.ajinz.test;
 import com.ajinz.main.StringCalculator;
+import com.ajinz.main.HandleNegativeValues;
 
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
@@ -31,6 +32,12 @@ public class StringCalculatorTest {
     }
     public void customDelimiter(){
         assertEquals(sc.Add("//;\\n1;2"), 3);
+    }
+    public void checkNegative() throws HandleNegativeValues.negativesNotAllowed {
+        sc.Add("-17,-18,10");
+    }
+    public void checkNegativeInCustomDelimiter() throws HandleNegativeValues.negativesNotAllowed {
+        sc.Add("//%\\n1%-8%-1%-12%26");
     }
 
     @org.testng.annotations.AfterMethod

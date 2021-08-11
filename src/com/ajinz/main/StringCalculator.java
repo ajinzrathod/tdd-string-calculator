@@ -1,8 +1,11 @@
 package com.ajinz.main;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StringCalculator {
     public int Add(String numbers){
-        String delimiter;
+        String delimiter, negative_numbers_str = "";
+        List<Integer> negative_numbers = new ArrayList<>();
 
         // Removing all Spaces
         numbers = numbers.replaceAll(" ", "");
@@ -28,8 +31,15 @@ public class StringCalculator {
         int total = 0;
         for (String n : split_numbers) {
             Integer current = Integer.parseInt(n);
+            if (current < 0) {
+                negative_numbers.add(current);
+                negative_numbers_str += (String.valueOf(current) + " ");
+            }
             total += current;
         }
+
+        // Throw Exception if negative Exists
+        HandleNegativeValues.throwExceptionIfNegativeExists(negative_numbers_str);
 
         return total;
     }
