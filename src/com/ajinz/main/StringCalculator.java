@@ -7,9 +7,19 @@ public class StringCalculator {
 
         // for an empty string
         if (numbers == "") return 0;
-        return 1;
+
+        int total = 0;
+
+        // Splitting numbers from comma
+        String[] split_numbers = numbers.split(",");
+
+        // Counting Total
+        for (String n : split_numbers) {
+            Integer current = Integer.parseInt(n);
+            total += current;
+        }
+        return total;
     }
     public static void main(String[] args) {
-        System.out.println("Jai Swaminarayan");
     }
 }
