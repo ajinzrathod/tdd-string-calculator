@@ -26,7 +26,12 @@ public class StringCalculatorTest {
     public void multipleNumbers(){
         assertEquals(sc.Add("10, 50, 90, 100"), 250);
     }
-
+    public void handleNewLines(){
+        assertEquals(sc.Add("10, 20\n 30"), 60);
+    }
+    public void customDelimiter(){
+        assertEquals(sc.Add("//;\\n1;2"), 3);
+    }
 
     @org.testng.annotations.AfterMethod
     public void tearDown() {
