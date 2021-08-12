@@ -11,7 +11,7 @@ public class StringCalculatorTest {
 
     @org.testng.annotations.BeforeMethod
     public void setUp() {
-        System.out.println("Starting Tests...");
+        System.out.println("Starting Test...");
         sc = new StringCalculator();
     }
 
