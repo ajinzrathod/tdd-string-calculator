@@ -51,10 +51,8 @@ public class StringCalculatorTest {
     public void longLengthMultipleDelimiters(){
         assertEquals(sc.Add("//[**][%%%][^^]\\n1**2%%%3^^6"), 12);
     }
-
     @org.testng.annotations.AfterMethod
     public void tearDown() {
         System.out.println("Completed");
     }
-
 }
