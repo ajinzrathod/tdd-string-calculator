@@ -56,4 +56,9 @@ public class StringCalculator {
         HandleNegativeValues.throwExceptionIfNegativeExists(negative_numbers_str);
         return total;
     }
+
+    public static void main(String[] args) {
+        StringCalculator s1 = new StringCalculator();
+        s1.Add("//%\\n1%-8%-1%-12%26");
+    }
 }
