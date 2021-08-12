@@ -42,6 +42,16 @@ public class StringCalculatorTest {
     public void greaterThan1000(){
         assertEquals(sc.Add("//-\\n2000-6-3-1-1001"), 10);
     }
+    public void longLengthDelimiterWithoutBraces(){
+        assertEquals(sc.Add("//%%%\\n1%%%3"), 4);
+    }
+    public void longLengthDelimiterWithBraces(){
+        assertEquals(sc.Add("//[^^]\\n1^^2^^3"), 6);
+    }
+    public void longLengthMultipleDelimiters(){
+        assertEquals(sc.Add("//[**][%%%][^^]\\n1**2%%%3^^6"), 12);
+    }
+
     @org.testng.annotations.AfterMethod
     public void tearDown() {
         System.out.println("Completed");

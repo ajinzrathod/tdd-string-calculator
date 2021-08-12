@@ -1,10 +1,14 @@
 package com.ajinz.main;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
     public int Add(String numbers){
         String delimiter, negative_numbers_str = "";
+        int index2, index1, multiple = 0;
         List<Integer> negative_numbers = new ArrayList<>();
 
         // Removing all Spaces
@@ -14,18 +18,59 @@ public class StringCalculator {
         if (numbers == "") return 0;
 
         // first line delimiter
-        int index1 = numbers.indexOf("//");
-        int index2 = numbers.indexOf("\\n");
+        // find if delimiter exists inside []
+        index1 = numbers.indexOf("//[");
+
+        if (index1 == -1) {
+            index1 = numbers.indexOf("//");
+            index2 = numbers.indexOf("\\n");
+        }
+        else{
+            index1 += 1;
+            index2 = numbers.indexOf("]\\n");
+            multiple = 1;
+        }
+
+        // to store unique delimiters
+        Set<Character> multiple_delimiters = new HashSet<>();
 
         // checking if delimiter exists in first line
         if (index1 != -1) {
             delimiter = numbers.substring(index1 + 2, index2);
+            System.out.println(delimiter);
+            delimiter = delimiter.replaceAll("[\\[\\]]", "");
+            System.out.println(delimiter);
+            for(int i = 0; i < delimiter.length(); i++){
+                multiple_delimiters.add(delimiter.charAt(i));
+            }
+            System.out.println(multiple_delimiters);
+
+            if (multiple == 1) index2++;
+
             numbers = numbers.substring(index2 + 2);
+
+            System.out.println(delimiter);
+
+            numbers = numbers.replaceAll(Pattern.quote(delimiter), ",");
+            System.out.println(numbers);
+
+            // replacing each delimiter with comma
+            for(Character m:multiple_delimiters){
+                String ms = String.valueOf(m);
+                numbers = numbers.replaceAll(Pattern.quote(ms), " ");
+            }
+            System.out.println(numbers);
+
+            // Replacing multiple spaces with comma
+            numbers = numbers.replaceAll(" +", ",");
+            System.out.println(numbers);
+            delimiter = ",";
         }
         else delimiter = ",|\n";
 
         // Splitting numbers with delimiter
         String[] split_numbers = numbers.split(delimiter);
+        System.out.println(split_numbers);
 
         // Counting Total of Numbers
         int total = 0;
