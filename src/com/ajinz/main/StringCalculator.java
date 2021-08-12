@@ -37,40 +37,31 @@ public class StringCalculator {
         // checking if delimiter exists in first line
         if (index1 != -1) {
             delimiter = numbers.substring(index1 + 2, index2);
-            System.out.println(delimiter);
-            delimiter = delimiter.replaceAll("[\\[\\]]", "");
-            System.out.println(delimiter);
-            for(int i = 0; i < delimiter.length(); i++){
-                multiple_delimiters.add(delimiter.charAt(i));
-            }
-            System.out.println(multiple_delimiters);
 
+            // Removing braces like this: []
+            delimiter = delimiter.replaceAll("[\\[\\]]", "");
+            for(int i = 0; i < delimiter.length(); i++)
+                multiple_delimiters.add(delimiter.charAt(i));
+
+            // because extra ] is added
             if (multiple == 1) index2++;
 
             numbers = numbers.substring(index2 + 2);
-
-            System.out.println(delimiter);
-
             numbers = numbers.replaceAll(Pattern.quote(delimiter), ",");
-            System.out.println(numbers);
 
             // replacing each delimiter with comma
             for(Character m:multiple_delimiters){
                 String ms = String.valueOf(m);
                 numbers = numbers.replaceAll(Pattern.quote(ms), " ");
             }
-            System.out.println(numbers);
-
             // Replacing multiple spaces with comma
             numbers = numbers.replaceAll(" +", ",");
-            System.out.println(numbers);
             delimiter = ",";
         }
         else delimiter = ",|\n";
 
         // Splitting numbers with delimiter
         String[] split_numbers = numbers.split(delimiter);
-        System.out.println(split_numbers);
 
         // Counting Total of Numbers
         int total = 0;
@@ -82,16 +73,12 @@ public class StringCalculator {
             }
 
             // Values greater than 1000 should not be added
-            if(current < 1001)
-                total += current;
+            if(current < 1001) total += current;
         }
 
         // Throw Exception if negative Exists
         HandleNegativeValues.throwExceptionIfNegativeExists(negative_numbers_str);
 
         return total;
-    }
-
-    public static void main(String[] args) {
     }
 }
