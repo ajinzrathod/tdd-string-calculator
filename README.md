@@ -15,7 +15,7 @@ This code is written step by step. You can check code at each commit. Only main 
 3. Add method can also handle an unknown amount of numbers
 4. Add method handles new lines between numbers.
    1. the following input is ok: `“1\n2,3”` (will equal **6**)
-   2.the following input is **NOT** ok: `“1,\n”` (not need to prove it - just clarifying)
+   2. the following input is **NOT** ok: `“1,\n”` (not need to prove it - just clarifying)
 5. Support for different delimiters
    1. to change a delimiter, the beginning of the string will contain a separate line that looks like this: `“//[delimiter]\n[numbers…]”` for example `“//;\n1;2”` should return three where the default delimiter is `‘;’`
    2. the first line is **optional**. all existing scenarios should still be supported
@@ -35,6 +35,10 @@ This code is written step by step. You can check code at each commit. Only main 
 ```
 tdd-string-calculator/src/com/ajinz/test/
 ```
+
+You should get following output:
+
+![Tree](https://github.com/ajinzrathod/tdd-string-calculator/blob/main/tests-success.png?raw=true)
 
 ## Version and Library Used
 
